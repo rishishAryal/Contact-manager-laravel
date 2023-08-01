@@ -24,8 +24,8 @@ class ContactController extends Controller
     }
 
     public function  store(){
-    Contact::create($this->validateContact());
-       return redirect('/');
+    Contact::create($this->validateNewContact());
+       return back()->with('success','New Contact Created!').redirect('/');
 
     }
 public function index(){
@@ -67,7 +67,7 @@ public function update( Contact $contact)
     $attributes = $this->ValidateContact($contact);
 
     $contact->update($attributes);
-    return back()->with('success','Contact Successfully updated');
+    return back()->with('success','Contact Successfully updated').redirect('/');
 
 }
 
@@ -84,5 +84,19 @@ public function validateContact(?Contact $contact = null): array
         'address'=>'required'
     ]);
 }
+
+    public function validateNewContact(?Contact $contact = null): array
+    {
+
+        $contact ??= new Contact();
+
+        return request()->validate([
+            'name'=>'required|max:255',
+            'email'=>'required|email|unique:contacts,email',
+            'phone_number'=>'required|numeric|digits:10|unique:contacts,phone_number',
+            'address'=>'required'
+        ]);
+    }
+
 
 }

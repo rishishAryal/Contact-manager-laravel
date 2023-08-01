@@ -10,7 +10,8 @@
             <input name="name" class="shadow appearance-none border rounded w-full
              py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                    id="name" type="text"
-                   required>
+                   required
+                   value="{{old('name', ' ')}}">
             @error('name')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
@@ -24,8 +25,9 @@
              leading-tight focus:outline-none focus:shadow-outline"
                    id="email"
                    type="email"
-                   placeholder="johndoe@example.com"
+
                    required
+                   value="{{old('email', ' ')}}"
                    >
             @error('email`')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -40,6 +42,7 @@
                    id="number" type="text"
                    placeholder="123-456-7890"
                    required
+                   value="{{old('phone_number', ' ')}}"
                    >
             @error('phone_number')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -52,7 +55,7 @@
             <textarea name="address" class="shadow appearance-none border rounded
              w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none
               focus:shadow-outline" id="address" placeholder="123 Main St, City"
-                      required ></textarea>
+                      required >{{old('address', ' ')}}</textarea>
             @error('address')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
