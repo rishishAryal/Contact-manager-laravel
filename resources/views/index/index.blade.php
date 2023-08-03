@@ -10,6 +10,7 @@
             <th class="px-4 py-2">Email</th>
             <th class="px-4 py-2">Address</th>
             <th class="px-4 py-2">Number</th>
+            <th class="px-4 py-2"></th>
             <th class="px-4 py-2">Actions</th>
 
         </tr>
